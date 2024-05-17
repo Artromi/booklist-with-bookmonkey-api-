@@ -1,5 +1,13 @@
 # booklist-with-bookmonkey-api
 
+[bookmonkey-api](https://www.npmjs.com/package/bookmonkey-api)
+
+```
+bookmonkey-api
+```
+
+---
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
