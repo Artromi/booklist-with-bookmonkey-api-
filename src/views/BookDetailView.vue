@@ -13,30 +13,30 @@
   </main>
 </template>
 <script>
-import ButtonFav from "@/components/ButtonFav.vue";
+import ButtonFav from '@/components/ButtonFav.vue'
 export default {
   components: { ButtonFav },
   data() {
     return {
-      book: {},
-    };
+      book: {}
+    }
   },
   created() {
-    this.fetchBook();
+    this.fetchBook()
   },
   methods: {
     fetchBook() {
-      const bookId = this.$route.params.id;
+      const bookId = this.$route.params.id
       fetch(`http://localhost:4730/books/${bookId}`)
         .then((response) => response.json())
         .then((bookData) => {
-          this.book = bookData;
-          console.log(this.book, bookData);
+          this.book = bookData
+          console.log(this.book, bookData)
         })
         .catch((error) => {
-          console.error("Error fetching book:", error);
-        });
-    },
-  },
-};
+          console.error('Error fetching book:', error)
+        })
+    }
+  }
+}
 </script>

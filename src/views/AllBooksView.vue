@@ -3,7 +3,7 @@
     <div class="flex p-10">
       <ul class="flex flex-wrap justify-center">
         <li
-          v-for="book in books"
+          v-for="book in bookStore.books"
           :key="book.id"
           class="flex flex-col w-72 sm:max-w-full m-1 bg-white rounded-md p-5 justify-between gap-1"
         >
@@ -13,7 +13,7 @@
             }}</router-link>
           </h2>
           <p class="text-sm">by: {{ book.author }}</p>
-          <ButtonFav />
+          <ButtonFav @toggle-favorite="receiveEmit(book)" />
         </li>
       </ul>
     </div>
@@ -21,22 +21,39 @@
 </template>
 
 <script>
-import ButtonFav from "@/components/ButtonFav.vue";
+import ButtonFav from '@/components/ButtonFav.vue'
+import { useBookStore } from '@/stores/BooksStore';
 
 export default {
+  setup() {
+  const bookStore = useBookStore()
+
+  return { bookStore }
+  },
   components: { ButtonFav },
   data() {
     return {
-      books: [],
-    };
+      books: []
+    }
   },
   created() {
-    // to get just 10 books:  ?_limit=10
-    fetch("http://localhost:4730/books")
-      .then((response) => response.json())
-      .then((bookData) => {
-        this.books = bookData;
-      });
+    this.bookStore.fetchBooks()
   },
-};
+  methods: {
+    receiveEmit(book) {
+      console.log('emit received')
+      fetch('http://localhost:4730/books/' + book.id, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ isFav: true })
+      })
+        .then(() => {
+          // buttonfarbe anpassen / als fav markiert
+
+          console.log(book)
+        })
+        .catch((error) => window.alert(error))
+    }
+  }
+}
 </script>

@@ -3,9 +3,15 @@
   <router-view />
 </template>
 <script>
-import HeaderComponent from "./components/HeaderComponent.vue";
+import { useBookStore } from './stores/BooksStore';
+import HeaderComponent from './components/HeaderComponent.vue'
 
 export default {
-  components: { HeaderComponent },
-};
+  setup() {
+  const bookStore = useBookStore()
+
+  return { bookStore }
+  },
+  components: { HeaderComponent }
+}
 </script>
