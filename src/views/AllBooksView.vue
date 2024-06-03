@@ -1,22 +1,14 @@
 <template>
-  <main class="bg-blue-100 min-h-screen">
-    <div class="flex p-10">
-      <ul class="flex flex-wrap justify-center">
-        <li
-          v-for="book in bookStore.books"
-          :key="book.id"
-          class="flex flex-col w-72 sm:max-w-full m-1 bg-white rounded-md p-5 justify-between gap-1"
-        >
-          <h2 class="text-pink-800 font-bold">
-            <router-link :to="{ name: 'detail', params: { id: book.id } }">{{
-              book.title
-            }}</router-link>
-          </h2>
-          <p class="text-sm">by: {{ book.author }}</p>
-          <ButtonFav @toggle-favorite="receiveEmit(book)" />
-        </li>
-      </ul>
+  <main class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6   bg-blue-100 min-h-screen p-3">
+    <div
+    class="flex flex-col justify-around gap-1 bg-white rounded-md p-3 "
+    v-for="book in bookStore.books"
+          :key="book.id">
+     <router-link :to="{ name: 'detail', params: { id: book.id } }"><h2 class="text-pink-800 font-bold">{{book.title}}</h2></router-link>
+     <p class="text-sm">by: {{book.author}}</p>
+     <ButtonFav @toggle-favorite="receiveEmit(book)"/>
     </div>
+
   </main>
 </template>
 
