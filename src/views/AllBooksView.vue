@@ -6,7 +6,7 @@
           :key="book.id">
      <router-link :to="{ name: 'detail', params: { id: book.id } }"><h2 class="text-pink-800 font-bold">{{book.title}}</h2></router-link>
      <p class="text-sm">by: {{book.author}}</p>
-     <ButtonFav @toggle-favorite="receiveEmit(book)"/>
+     <ButtonFav :class="book.isFav ? 'bg-pink-600 text-white' : 'bg-white'" @click="favoriteToggle(book)"/>
     </div>
 
   </main>
@@ -32,20 +32,10 @@ export default {
     this.bookStore.fetchBooks()
   },
   methods: {
-    receiveEmit(book) {
-      console.log('emit received')
-      fetch('http://localhost:4730/books/' + book.id, {
-        method: 'PATCH',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ isFav: true })
-      })
-        .then(() => {
-          // buttonfarbe anpassen / als fav markiert
-
-          console.log(book)
-        })
-        .catch((error) => window.alert(error))
-    }
+    favoriteToggle(book) {
+      book.isFav = !book.isFav
+      this.bookStore.patchBook(book)
+    },
   }
 }
 </script>

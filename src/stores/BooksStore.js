@@ -11,6 +11,17 @@ export const useBookStore = defineStore('bookStore', {
         .then((bookData) => {
           this.books = bookData
         })
+    },
+    patchBook(book) {
+      fetch('http://localhost:4730/books/' + book.id, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ isFav: book.isFav })
+      })
+        .then(() => {
+          this.fetchBooks()
+        })
+        .catch((error) => window.alert(error))
     }
   }
 })
