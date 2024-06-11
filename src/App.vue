@@ -1,17 +1,17 @@
 <template>
-  <HeaderComponent />
+  <HeaderSection />
   <router-view />
 </template>
 <script>
-import { useBookStore } from './stores/BooksStore';
-import HeaderComponent from './components/HeaderComponent.vue'
+import { useBookStore } from './stores/BooksStore'
+import HeaderSection from './components/HeaderSection.vue'
 
 export default {
   setup() {
-  const bookStore = useBookStore()
+    const bookStore = useBookStore()
 
-  return { bookStore }
+    return { bookStore }
   },
-  components: { HeaderComponent }
+  components: { HeaderSection }
 }
 </script>

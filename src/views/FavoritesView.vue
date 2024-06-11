@@ -1,13 +1,7 @@
 <template>
-  <main>
-    <div></div>
-  </main>
+  <main></main>
 </template>
 
 <script>
-import ButtonFav from '@/components/ButtonFav.vue'
-
-export default {
-  components: { ButtonFav }
-}
+export default {}
 </script>
