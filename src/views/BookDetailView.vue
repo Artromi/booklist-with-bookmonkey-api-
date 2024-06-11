@@ -31,7 +31,6 @@ export default {
         .then((response) => response.json())
         .then((bookData) => {
           this.book = bookData
-          console.log(this.book, bookData)
         })
         .catch((error) => {
           console.error('Error fetching book:', error)

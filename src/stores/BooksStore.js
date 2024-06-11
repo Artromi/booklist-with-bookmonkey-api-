@@ -23,5 +23,10 @@ export const useBookStore = defineStore('bookStore', {
         })
         .catch((error) => window.alert(error))
     }
+  },
+  getters: {
+    favoriteBooks: (state) => {
+      return state.books.filter((book) => book.isFav)
+    }
   }
 })

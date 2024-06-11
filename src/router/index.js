@@ -1,18 +1,18 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import AllBooksView from '../views/AllBooksView.vue'
-import FavoritesView from '../views/FavoritesView.vue'
+import BooksView from '../views/BooksView.vue'
+import BookFavoritesView from '../views/BookFavoritesView.vue'
 import BookDetailView from '@/views/BookDetailView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'books',
-    component: AllBooksView
+    component: BooksView
   },
   {
     path: '/favorites',
     name: 'favorites',
-    component: FavoritesView
+    component: BookFavoritesView
   },
   {
     path: '/detail/:id',
