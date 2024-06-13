@@ -1,9 +1,11 @@
 <template>
-  <main
-    class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6 bg-blue-100 min-h-screen py-16 px-60"
+ <main
+    class="bg-blue-100 min-h-screen py-16 px-72 "
   >
- 
-    <BookDetailCard  v-for="book in bookStore.books" :key="book.id" :book="book" @handlePatch="favoriteToggle(book)"/>
+  <div class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+     <BookDetailCard  v-for="book in bookStore.books" :key="book.id" :book="book" @handlePatch="favoriteToggle(book)"/>
+  </div>
+   
   </main>
 </template>
 

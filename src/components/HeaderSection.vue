@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-evenly items-center py-10 border-b-2 border-pink-600">
-    <h1 class="font-bold text-pink-600 text-3xl ml-10">Bookmonkey</h1>
-    <nav class="ml-10">
+    <h1 class="font-bold text-pink-600 text-5xl ml-10">Bookmonkey</h1>
+    <nav>
       <router-link
         class="border border-pink-600 rounded-lg px-1 text-lg mr-2"
         :class="{ 'bg-pink-600 text-white': $route.name === 'books' }"
